@@ -7,6 +7,8 @@ const menyuRoutes = require("../routes/restoran_menu.js");
 const yetkazuvchilarRoutes = require("../routes/yetkazuvchilar.js");
 const mijozlarRoutes = require("../routes/mijozlar.js");
 const buyurtmalarRoutes = require("../routes/buyurtmalar.js");
+const finderRoute = require("../routes/finder.js");
+
 
 router.use('/ovqatlar', ovqatlarRoutes);
 
@@ -19,5 +21,7 @@ router.use('/yetkazuvchilar', yetkazuvchilarRoutes);
 router.use('/mijozlar', mijozlarRoutes);
 
 router.use('/buyurtmalar', buyurtmalarRoutes);
+
+router.use('/finder', finderRoute);
 
 module.exports = router

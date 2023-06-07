@@ -67,31 +67,3 @@ exports.deleteBuyurtmaById = (req, res) => {
         })
     })
 }
-
-/////////////////////////////////// FINDERS
-
-exports.buyurtmalarInfos = (req, res) => {
-    const { mahsulot, qachondan, qachongacha } = req.body
-    const query = "SELECT \
-buyurtmalar.id as buyurtma_idsi, \
-ovqatlar.name as ovqat \
-restoran.name as restoran_nomi, \
-mijozlar.id as mijoz_idsi, \
-mijozlar.name as mijoz_nomi, \
-yetkazuvchilar.id as yetkazuvchi_idsi, \
-yetkazuvchilar.name as yetakzuvchi_nomi \
-FROM buyurtmalar \
-JOIN restoran_menu ON buyurtmalar.zakaz = restoran_menu.id \
-JOIN ovqatlar restoran_menu.ovqat_id = ovqatlar.id \
-JOIN restoran ON restoran_menu.restoran_id = restoran.id \
-JOIN mijozlar ON buyutymalar.mijoz_id = mijozlar.id \
-JOIN yetkazuvchilar ON buyutymalar.yetkazuvchi_id = yetkazuvchilar.id \
-WHERE ovqatlar.name = ? AND buyurtmalar.zakaz_vaqti BETWEEN ? AND ?"
-    db.query(query, [mahsulot, qachondan, qachongacha], (error, result) => {
-        if (error) {
-            return res.status(500).json({"error": "Server javob bermadi!"})
-        }
-
-        res.json(result)
-    })
-}

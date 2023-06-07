@@ -13,7 +13,5 @@ router.put('/:id', buyurtmalarControllers.putBuyurtmaById);
 
 router.delete('/:id', buyurtmalarControllers.deleteBuyurtmaById);
 
-/////////////////////////////////// FINDERS
-router.get('/info', buyurtmalarControllers.buyurtmalarInfos);
 
 module.exports = router
